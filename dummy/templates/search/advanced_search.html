@@ -1,0 +1,93 @@
+{% load render_table from django_tables2 %}
+<!doctype html>
+<html>
+    <head>
+      <script>
+	function show_query(){
+	var all=document.getElementById("id_all_these_words").value;
+	var exact=document.getElementById("id_this_exact_word_or_phrase").value
+	var any=document.getElementById("id_any_of_these_words").value;
+	var none=document.getElementById("id_none_of_these_words").value;
+	var y=document.getElementById("SQL");
+	var text = "SELECT * FROM WEBSITES WHERE (\n";
+	if (all != ""){
+	  var words = all.split(" ");
+	  for (var i = 0; i < words.length; i++){
+            if (i == 0){ text += "(";}
+            text += "(BODY LIKE \"%"+words[i]+"%\""+" OR TITLE LIKE "+"\"%"+words[i]+"%\""+")";
+            if (i < words.length -1){
+              text += " AND ";
+            }
+            else{
+              text += ")";
+            }
+          }
+	}
+	if (exact != ""){
+          if (all != ""){
+            text += " AND \n";
+          }
+	  text += "(BODY LIKE \"%"+exact+"%\" OR TITLE LIKE \"%"+exact+"%\")";
+	}
+        if (any != ""){
+          if (all != "" || exact != ""){
+             text += " AND \n";
+          }
+          var any_words = any.split(" ");
+	  for (var i = 0; i < any_words.length; i++){
+            if (i == 0){ text += "(";}
+            text += "(BODY LIKE \"%"+any_words[i]+"%\" OR TITLE LIKE \"%"+any_words[i]+"%\")";
+            if (i < any_words.length -1){
+              text += " OR ";
+            }
+            else{
+              text += ")";
+            }
+          }
+        }
+        if (none != ""){
+          if (all != "" || exact != "" || any != ""){
+             text += " AND \n";
+          }
+          var none_words = none.split(" ");
+	  for (var i = 0; i < none_words.length; i++){
+            if (i == 0){ text += "(";}
+            text += "(NOT BODY LIKE \"%"+none_words[i]+"%\" AND NOT TITLE LIKE \"%"+none_words[i]+"%\")";
+            if (i < none_words.length -1){
+              text += " AND ";
+            }
+            else{
+              text += ")";
+            }
+          }
+        } 
+        text += "\n);";
+	y.value = text;
+	}
+      </script>
+      <link rel="stylesheet" href="{{ STATIC_URL }}django_tables2/themes/paleblue/css/screen.css" />
+    </head>
+    <body>
+      <div>
+      <form action="" method="post">{% csrf_token %}
+	{{ form.as_p }}
+	<input type="submit" value="Search" onkeyup="show_query()" />
+      </form>
+      <a href="/search">Simple Search</a>
+      </div>
+      <div>
+      {% if table %}
+      {% render_table table %}
+      {% endif %}
+      </div>
+      <div>Equivalent SQL query: 
+	<textarea rows="10" cols="160" id="SQL" onkeyup="show_query()">
+	</textarea>
+      </div>
+    </body>
+</html>
+
+
+
+
+
