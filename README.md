@@ -19,8 +19,10 @@ As the user builds the query, update a text box showing what the query would loo
 
 I realized this task using a django application which I called search.
 Requirements are:
-django 1.4\n
-mysql-server 5.5
-python-mysqldb 1.2
-python 2.7
+django 1.4,
+mysql-server 5.5,
+python-mysqldb 1.2,
+python 2.7,
 django_tables2
+
+It might work with different versions.
