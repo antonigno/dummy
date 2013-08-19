@@ -1,7 +1,7 @@
 dummy
 =====
 
-coding tasks and exericises
+coding tasks and exercises
 
 1) "As an exercise to show your abilities we would like to see the following. 
 You can use Ruby or Python (or something else if you see fit but considerable credit will be deducted for using PHP)
@@ -26,3 +26,12 @@ python 2.7,
 django_tables2
 
 It might work with different versions.
+
+Install everything than create a database "dummy" in mysql.
+then mysql -u user -p < dummy.sql
+start server with python manage.py runserver 8080
+access via browser http://localhost:8080/search to start
+actually only a few fake websites has been inserted in db.
+you can test the functionalities with keywords like python, news....
+try searching something strange to have a list of all configured sites.
+rank will be calculated adding a rank value for every keyword configured for each site.
