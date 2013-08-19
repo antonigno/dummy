@@ -27,13 +27,13 @@ django_tables2
 
 It might work with different versions.
 
-Install everything than create a database "dummy" in mysql.
-then mysql -u user -p < dummy.sql
-configure dummy/settings.py with your db credentials.
-start server with python manage.py runserver 8080 or whatever port and url you like
-access via browser http://localhost:8080/search to start
-actually only a few fake websites has been inserted in db.
-you can test the functionalities with keywords like python, news....
-try searching something strange to have a list of all configured sites.
-rank will be calculated adding a rank value for every keyword configured for each site.
-A working server is running @ http://199.175.51.240:8080/search/
+Install everything than create a database "dummy" in mysql; 
+then mysql -u user -p < dummy.sql; 
+configure dummy/settings.py with your db credentials; 
+start server with python manage.py runserver 8080 or whatever port and url you like; 
+access via browser http://localhost:8080/search to start; 
+actually only a few fake websites has been inserted in db. 
+you can test the functionalities with keywords like python, news.... 
+try searching something strange to have a list of all configured sites. 
+rank will be calculated adding a rank value for every keyword configured for each site. 
+A working server is running @ http://199.175.51.240:8080/search/ 
