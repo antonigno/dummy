@@ -12,6 +12,7 @@ urlpatterns = patterns('',
     url(r'^search_results/$', 'search.views.search_results', name='search_result'),
     url(r'^website/(?P<website_id>\d+)/$$', 'search.views.website', name='website'),
     url(r'^search/$', 'search.views.search', name='search'),
+    url(r'^search_results/$', 'search.views.search_results', name='search_results'),
     url(r'^advanced_search/$', 'search.views.advanced_search', name='advanced_search'),
     # url(r'^dummy/', include('dummy.foo.urls')),
 
