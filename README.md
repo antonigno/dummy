@@ -16,20 +16,23 @@ The display of the results should implement proper paging behaviour.
 An extension - in place of a simple search form, put an "Advanced" query builder to construct more complex queries 
 (see Google for example). 
 As the user builds the query, update a text box showing what the query would look like in the query language.
--------------------------------------------------------------------------------------------------------------------
 
+Realization
+-------------------------------------------------------
 I realized this task using a django project called "dummy" and an application called "search".
--------------------------------------------------------------------------------------------------------------------
+
 Requirements:
+-------------------------------------------------------------
 django 1.4,
 mysql-server 5.5,
 python-mysqldb 1.2,
 python 2.7,
 django_tables2
--------------------------------------------------------------------------------------------------------------------
 
 It might work with different versions.
 
+Instructions:
+-------------------------------------------------------------------
 Install everything than create a database "dummy" in mysql; 
 then mysql -u user -p < dummy.sql; 
 configure dummy/settings.py with your db credentials; 
